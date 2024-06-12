@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:i_surveil_project/models/colors.dart';
 import 'package:i_surveil_project/screens/LoginScreen.dart';
 import 'package:i_surveil_project/screens/dashboard_screen.dart';
-import 'package:i_surveil_project/screens/notifications_screen.dart';
-import 'package:i_surveil_project/screens/sidepopupMenu.dart';
+
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -39,11 +38,11 @@ class SignUpPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  "I-Surveil",
+                  "I-Surveill",
                   style: TextStyle(
                     color: Colors.white,
                     // fontStyle: FontStyle.italic,
-                    fontSize: 55,
+                    fontSize: 65,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -159,38 +158,9 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // SizedBox(height: 12),
-                // Container(
-                //   height: 50,
-                //   width: double.infinity,
-                //   margin: EdgeInsets.only(left: 72, right: 72),
-                //   // child: ElevatedButton(
-                //   //   child: Text(
-                //   //     "LOGIN",
-                //   //     style: TextStyle(
-                //   //       color: Colors.white,
-                //   //       fontWeight: FontWeight.bold,
-                //   //       fontSize: 16,
-                //   //     ),
-                //   //   ),
-                //   //   onPressed: () {
-                //   //     Navigator.push(
-                //   //       context,
-                //   //       MaterialPageRoute(builder: (context) => DashboardApp()),
-                //   //     );
-                //   //   },
-                //   //   style: ElevatedButton.styleFrom(
-                //   //     backgroundColor: colors,
-                //   //     shape: RoundedRectangleBorder(
-                //   //       borderRadius: BorderRadius.circular(30),
-                //   //     ),
-                //   //   ),
-                //   //
-                //   // ),
-                // ),
                 SizedBox(height: 10),
                 Text(
-                  "product of I.E.Solutions",
+                  "product of Intelligent.SO",
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 15,

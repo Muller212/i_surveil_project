@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:i_surveil_project/models/colors.dart';
 import 'package:i_surveil_project/screens/access_logs_screen.dart';
 import 'package:i_surveil_project/screens/camera_feeds_screen.dart';
 import 'package:i_surveil_project/screens/dashboard_screen.dart';
+import 'package:i_surveil_project/screens/notifications_screen.dart';
 import 'package:i_surveil_project/screens/reports_screen.dart';
 
 void main() {
@@ -25,7 +27,7 @@ class SidepopUp extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
               decoration: BoxDecoration(
-                color: Colors.blueGrey[800],
+                color: colors,
               ),
             ),
             ListTile(
@@ -74,7 +76,7 @@ class SidepopUp extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                  MaterialPageRoute(builder: (context) => Notifications()),
                 );
               },
             ), ListTile(
@@ -113,14 +115,13 @@ class SidepopUp extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                  MaterialPageRoute(builder: (context) => Notifications()),
                 );
               },
             ),
           ],
         ),
       ),
-
     );
   }
 }

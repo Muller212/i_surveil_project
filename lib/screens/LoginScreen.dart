@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:i_surveil_project/models/colors.dart';
 import 'package:i_surveil_project/screens/SignUpScreen.dart';
 import 'package:i_surveil_project/screens/dashboard_screen.dart';
-import 'package:i_surveil_project/screens/notifications_screen.dart';
-import 'package:i_surveil_project/screens/sidepopupMenu.dart';
+
 
 class LoginPage extends StatelessWidget {
   @override
@@ -39,17 +38,17 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  "I-Surveil",
+                  "I-Surveill",
                   style: TextStyle(
                     color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 45,
+                    // fontStyle: FontStyle.italic,
+                    fontSize: 65,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "I.E.Solutions",
+                  "Intelligent.SO",
                   style: TextStyle(
                     color: Colors.grey.shade800,
                     fontSize: 25,
@@ -104,14 +103,14 @@ class LoginPage extends StatelessWidget {
                 Container(
                   height: 50,
                   width: double.infinity,
-                  margin: EdgeInsets.only(left: 72, right: 72),
+                  margin: EdgeInsets.only(left: 110, right: 110),
                   child: ElevatedButton(
                     child: Text(
                       "LOGIN",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 18,
                       ),
                     ),
                     onPressed: () {
@@ -138,31 +137,6 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
-                // Container(
-                //   height: 50,
-                //   width: double.infinity,
-                //   margin: EdgeInsets.only(left: 40, right: 40),
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       // Your sign-in logic here
-                //     },
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: colors,
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(30),
-                //       ),
-                //     ),
-                //     child: Text(
-                //       "SIGN IN",
-                //       style: TextStyle(
-                //         color: Colors.white,
-                //         fontWeight: FontWeight.bold,
-                //         fontSize: 16,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
