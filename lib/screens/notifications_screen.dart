@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:i_surveil_project/screens/access_logs_screen.dart';
 import 'package:i_surveil_project/screens/camera_feeds_screen.dart';
 import 'package:i_surveil_project/screens/dashboard_screen.dart';
+import 'package:i_surveil_project/screens/reports_screen.dart';
 
 void main() {
-  runApp(ReportsScreenApp());
+  runApp(Notifications());
 }
 
-class ReportsScreenApp extends StatelessWidget {
+class Notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ReportsScreenAppScreen(),
+      home: NotificationsScreen(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -19,12 +20,12 @@ class ReportsScreenApp extends StatelessWidget {
   }
 }
 
-class ReportsScreenAppScreen extends StatefulWidget {
+class NotificationsScreen extends StatefulWidget {
   @override
-  _ReportsScreenAppScreenState createState() => _ReportsScreenAppScreenState();
+  _NotificationsScreenState createState() => _NotificationsScreenState();
 }
 
-class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,7 @@ class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
         backgroundColor: Colors.white70,
         actions: [
           IconButton(
-            icon: Icon(Icons.search, color: Colors.black),
+            icon: Icon(Icons.settings, color: Colors.black),
             onPressed: () {
               // Define your search action here
             },
@@ -98,7 +99,7 @@ class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                  MaterialPageRoute(builder: (context) => Notifications()),
                 );
               },
             ), ListTile(
@@ -149,16 +150,6 @@ class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Reports',
-                style: TextStyle(
-                  fontSize: 46.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
@@ -175,61 +166,59 @@ class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildReportColumn('All Reports', true),
-                    _buildReportColumn('Video Data', false),
-                    _buildReportColumn('Logs', false),
-                    _buildReportColumn('Alerts', false),
+                    _buildReportColumn('Alerts', true),
+                    _buildReportColumn('Events', false),
                   ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Customize Reports',
-                style: TextStyle(
-                  fontSize: 29.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  _buildCustomizeRow('Report Range', 'Last 7 Days'),
-                  _buildCustomizeRowWithIcon('Email Report to:', ''),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Define your cancel action here
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.red, backgroundColor: Colors.white, // Text color
-                      side: BorderSide(color: Colors.red), // Border color
-                    ),
-                    child: Text('Cancel'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Define your generate report action here
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.blue, backgroundColor: Colors.white, // Text color
-                      side: BorderSide(color: Colors.blue), // Border color
-                    ),
-                    child: Text('Generate Report'),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            //   child: Text(
+            //     'Customize Reports',
+            //     style: TextStyle(
+            //       fontSize: 29.0,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            //   child: Column(
+            //     children: [
+            //       _buildCustomizeRow('Report Range', 'Last 7 Days'),
+            //       _buildCustomizeRowWithIcon('Email Report to:', ''),
+            //     ],
+            //   ),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       ElevatedButton(
+            //         onPressed: () {
+            //           // Define your cancel action here
+            //         },
+            //         style: ElevatedButton.styleFrom(
+            //           foregroundColor: Colors.red, backgroundColor: Colors.white, // Text color
+            //           side: BorderSide(color: Colors.red), // Border color
+            //         ),
+            //         child: Text('Cancel'),
+            //       ),
+            //       ElevatedButton(
+            //         onPressed: () {
+            //           // Define your generate report action here
+            //         },
+            //         style: ElevatedButton.styleFrom(
+            //           foregroundColor: Colors.blue, backgroundColor: Colors.white, // Text color
+            //           side: BorderSide(color: Colors.blue), // Border color
+            //         ),
+            //         child: Text('Generate Report'),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -251,51 +240,5 @@ class _ReportsScreenAppScreenState extends State<ReportsScreenAppScreen> {
     );
   }
 
-  Widget _buildCustomizeRow(String leftText, String rightText) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            leftText,
-            style: TextStyle(fontSize: 16.0),
-          ),
-          Text(
-            rightText,
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ],
-      ),
-    );
-  }
 
-  Widget _buildCustomizeRowWithIcon(String leftText, String rightText) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            leftText,
-            style: TextStyle(fontSize: 16.0),
-          ),
-          Row(
-            children: [
-              Text(
-                rightText,
-                style: TextStyle(fontSize: 16.0),
-              ),
-              IconButton(
-                icon: Icon(Icons.arrow_forward),
-                onPressed: () {
-                  // Define your icon action here
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }

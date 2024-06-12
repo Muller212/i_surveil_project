@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:i_surveil_project/screens/access_logs_screen.dart';
+import 'package:i_surveil_project/screens/dashboard_screen.dart';
+import 'package:i_surveil_project/screens/reports_screen.dart';
 
 void main() {
   runApp(CameraFeedsApp());
@@ -23,12 +25,12 @@ class _CameraFeedsAppScreenState extends State<CameraFeedsAppScreen> {
   int _selectedIndex = 0;
 
   final List<String> cameraNames = [
-    'Hallway',
-    'Staircase',
+    'lobby',
+    'Parking Lot',
     'Garage',
-    'Living Room',
+    'Exit',
     'Kitchen',
-    'Bedroom'
+    'Main Entrance'
   ]; // List of camera names
 
   void _onItemTapped(int index) {
@@ -50,12 +52,6 @@ class _CameraFeedsAppScreenState extends State<CameraFeedsAppScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white70,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Define your back action here
-          },
-        ),
         title: Text(
           'Camera Feeds',
           style: TextStyle(
@@ -67,12 +63,120 @@ class _CameraFeedsAppScreenState extends State<CameraFeedsAppScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'I-Surveil',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey[800],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.dashboard_outlined),
+              title: Text('Dashboard'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.camera),
+              title: Text('Camera Feeds'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CameraFeedsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.switch_access_shortcut_add),
+              title: Text('Access-Logs'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccesslogsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.restore_page_outlined),
+              title: Text('General Reports'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReportsScreenApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.message_sharp),
+              title: Text('Notifications'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ), ListTile(
+              leading: Icon(Icons.videocam_outlined),
+              title: Text('Video Feeds'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CameraFeedsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.reduce_capacity),
+              title: Text('Red List'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.reduce_capacity_sharp),
+              title: Text('BlackList'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.emergency_outlined),
+              title: Text('SOS'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: cameraNames.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -111,45 +215,45 @@ class _CameraFeedsAppScreenState extends State<CameraFeedsAppScreen> {
                 },
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey, // Background color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey, // Background color
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  // Add your onPressed code here!
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Full Screen',
-                    style: TextStyle(
-                      color: Colors.black, // Text color
-                      fontSize: 18.0,
+                  onPressed: () {
+                    // Add your onPressed code here!
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Full Screen',
+                      style: TextStyle(
+                        color: Colors.black, // Text color
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: _selectedIndex == 1 ? Colors.black : Colors.black38),
+            icon: Icon(Icons.home, color: _selectedIndex == 1 ? Colors.black : Colors.black38),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.videocam_outlined,color: Colors.black),
+            icon: Icon(Icons.videocam_outlined, color: Colors.black),
             label: 'Cameras',
           ),
           BottomNavigationBarItem(
@@ -169,4 +273,3 @@ class _CameraFeedsAppScreenState extends State<CameraFeedsAppScreen> {
     );
   }
 }
-

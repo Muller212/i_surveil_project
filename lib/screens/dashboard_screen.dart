@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:i_surveil_project/models/colors.dart';
+import 'package:i_surveil_project/screens/access_logs_screen.dart';
 import 'package:i_surveil_project/screens/camera_feeds_screen.dart';
+import 'package:i_surveil_project/screens/notifications_screen.dart';
+import 'package:i_surveil_project/screens/reports_screen.dart';
 
 void main() {
   runApp(DashboardApp());
@@ -32,11 +36,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan,
+        elevation: 2,
+        // backgroundColor: colors, // Use the color theme here
         title: Text(
           'Dashboard',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.black, // Adjusted to match the theme
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.italic,
             fontSize: 32.0, // You can adjust the font size as needed
@@ -45,12 +50,118 @@ class _DashboardScreenState extends State<DashboardScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.search, color: Colors.black),
+            icon: Icon(Icons.search, color: Colors.white), // Adjusted to match the theme
             onPressed: () {},
           ),
         ],
       ),
-      body: Padding(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'I-Surveil',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey[800],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.dashboard_outlined),
+              title: Text('Dashboard'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.camera),
+              title: Text('Camera Feeds'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CameraFeedsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.switch_access_shortcut_add),
+              title: Text('Access-Logs'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccesslogsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.restore_page_outlined),
+              title: Text('General Reports'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReportsScreenApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.message_sharp),
+              title: Text('Notifications'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Notifications()),
+                );
+              },
+            ), ListTile(
+              leading: Icon(Icons.videocam_outlined),
+              title: Text('Video Feeds'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CameraFeedsApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.reduce_capacity),
+              title: Text('Red List'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.reduce_capacity_sharp),
+              title: Text('BlackList'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.emergency_outlined),
+              title: Text('SOS'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardApp()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,22 +216,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: colors, // Use the color theme here
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.black),
+            icon: Icon(Icons.home, color: Colors.black), // Adjusted to match the theme
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications, color: Colors.black),
+            icon: Icon(Icons.notifications, color: Colors.black), // Adjusted to match the theme
             label: 'Alerts',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: Colors.black),
+            icon: Icon(Icons.search, color: Colors.black), // Adjusted to match the theme
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Colors.black),
+            icon: Icon(Icons.settings, color: Colors.black), // Adjusted to match the theme
             label: 'Settings',
           ),
         ],
@@ -136,7 +247,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white30,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
